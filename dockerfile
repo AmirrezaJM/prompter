@@ -1,5 +1,5 @@
 # Use official Node.js image
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -15,7 +15,7 @@ RUN pnpm install
 COPY . .
 
 # Build the Next.js app
-RUN pnpm build
+# RUN pnpm build
 
 # Expose the port
 EXPOSE 3000
