@@ -1,0 +1,25 @@
+services:
+  # PostgreSQL service
+  postgres:
+    image: postgres
+    container_name: my-postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  # Next.js app service
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: prompty
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}
