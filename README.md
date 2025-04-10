@@ -99,7 +99,7 @@ Visit: http://localhost:3000
 ```
 
 ## 📁 Project Structure
-
+```bash
 app/
 ├── actions/            → Server actions (CRUD logic)
 ├── components/         → UI elements & custom components
@@ -107,7 +107,7 @@ app/
 ├── prisma/             → Prisma schema & migrations
 ├── public/             → Static files
 ├── styles/             → Tailwind CSS config
-
+```
 ## 📄 License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
