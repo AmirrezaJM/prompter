@@ -93,7 +93,7 @@ export function PromptItem({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border rounded-2xl bg-slate-50 px-4 py-4 my-3 hover:bg-slate-100 transition-colors">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border rounded-2xl bg-slate-50 dark:bg-[#1f1f1f] text-[#0e141b] dark:text-white px-4 py-4 my-3 hover:bg-slate-100 transition-colors">
       <div className="flex-1 w-full">
         <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-1">
           <div>
@@ -102,13 +102,13 @@ export function PromptItem({
             </p>
           </div>
           <div>
-            <p className="text-[#4e7397] text-sm font-normal leading-normal line-clamp-2">
+            <p className="text-[#4e7397] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">
               {mood}
             </p>
           </div>
         </div>
         <div className="flex justify-start">
-          <p className="text-[#4e7397] text-sm font-normal leading-normal line-clamp-2">
+          <p className="text-[#4e7397] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">
             description: {description}
           </p>
         </div>
@@ -119,7 +119,7 @@ export function PromptItem({
             <Button
               variant="ghost"
               size="icon"
-              className="text-[#0e141b] h-7 w-7"
+              className="text-[#0e141b] h-7 w-7 dark:text-white"
             >
               <MoreHorizontal size={24} />
               <span className="sr-only">Open menu</span>
@@ -157,7 +157,7 @@ export function PromptItem({
 
       {/* Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] dark:bg-[#1e1e1e]">
           <DialogHeader>
             <DialogTitle>Edit Prompt</DialogTitle>
             <DialogDescription>
@@ -168,7 +168,7 @@ export function PromptItem({
           <form onSubmit={handleDialogSubmit}>
             <div className="grid gap-4 py-4">
               <div className="grid gap-2">
-                <Label htmlFor="title">Title</Label>
+                <Label htmlFor="title" className="dark:text-gray-300">Title</Label>
                 <Input
                   id="title"
                   value={editTitle}
@@ -177,7 +177,7 @@ export function PromptItem({
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description" className="dark:text-gray-300">Description</Label>
                 <Textarea
                   id="description"
                   value={editdescription}

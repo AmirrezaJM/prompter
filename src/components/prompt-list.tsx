@@ -18,14 +18,14 @@ export default async function PromptList() {
         <div className="w-full py-4 text-center">
           <Tabs defaultValue="all" className="w-full">
             <div className="flex justify-center md:justify-start">
-              <TabsList>
+              <TabsList className="bg-slate-100 dark:bg-[#1f1f1f]">
                 <TabsTrigger value="all">All Prompts</TabsTrigger>
                 <TabsTrigger value="favorite">Favorite Prompt</TabsTrigger>
               </TabsList>
             </div>
             <TabsContent value="all">
               {prompts?.length === 0 ? (
-                <p className="text-gray-500 text-sm">No prompts found.</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-4">No prompts found.</p>
               ) : (
                 <div>
                   {prompts?.map((prompt) => (
@@ -43,7 +43,7 @@ export default async function PromptList() {
             </TabsContent>
             <TabsContent value="favorite">
               {favoritePrompts?.length === 0 ? (
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-4">
                   No favorite Prompts found.
                 </p>
               ) : (

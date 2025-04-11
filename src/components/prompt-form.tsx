@@ -45,9 +45,9 @@ export default function PromptForm() {
     title.trim() === "" || description.trim() === "" || mood.trim() === "";
   return (
     <div className="w-full px-4 sm:px-6 md:px-8 flex justify-center">
-      <Card className="w-full max-w-md border-none shadow-md bg-white">
+      <Card className="w-full max-w-md border-none shadow-md bg-white dark:bg-[#1e1e1e] transition-colors">
         <CardHeader className="px-4 pb-2 pt-5">
-          <CardTitle className="text-[#0e141b] text-2xl font-bold leading-tight text-center">
+          <CardTitle className="text-[#0e141b] dark:text-white text-2xl font-bold leading-tight">
             Create a new prompt
           </CardTitle>
         </CardHeader>
