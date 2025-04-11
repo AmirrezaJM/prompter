@@ -84,11 +84,11 @@ npm run dev
 
 ### 1. Add .env file:
 ```bash
+NODE_ENV=development
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-POSTGRES_DB=prompter
+POSTGRES_DB=prompty
 DATABASE_URL=postgresql://postgres:postgres@db:5432/prompter
-NODE_ENV=production
 ```
 ### 2. Run everything in Docker:
 ```bash
