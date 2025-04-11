@@ -88,6 +88,7 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=prompter
 DATABASE_URL=postgresql://postgres:postgres@db:5432/prompter
+NODE_ENV=production
 ```
 ### 2. Run everything in Docker:
 ```bash

@@ -1,25 +1,31 @@
 services:
-  # PostgreSQL service
+  # PostgreSQL service (if you're using Prisma with a database)
   postgres:
-    image: postgres
-    container_name: my-postgres
+    image: postgres:latest
+    container_name: postgres
     ports:
-      - '5432:5432'
+      - "5432:5432"
     environment:
-      POSTGRES_USER: ${PGUSER}
-      POSTGRES_PASSWORD: ${PGPASSWORD}
-      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Corrected volume name
+
 
   # Next.js app service
   app:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     container_name: prompty
     ports:
-      - '3000:3000'
+      - '3000:3000' 
     depends_on:
       - postgres
     environment:
       NODE_ENV: ${NODE_ENV}
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${DATABASE_URL}  # Ensure DATABASE_URL is correctly set
+
+volumes:
+  postgres_data: {} 

@@ -1,10 +1,10 @@
 # Use official Node.js image
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Set working directory
-WORKDIR /app
+WORKDIR /src/app
 
-# Enable corepack and prepare pnpm
+# Install pnpm via Corepack
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Copy package files and install dependencies
@@ -14,11 +14,14 @@ RUN pnpm install
 # Copy the rest of the app
 COPY . .
 
+# ✅ Generate Prisma Client
+RUN npx prisma generate
+
 # Build the Next.js app
-# RUN pnpm build
+RUN pnpm build
 
 # Expose the port
 EXPOSE 3000
 
-# Start the app
+# Start the Next.js app
 CMD ["pnpm", "start"]
