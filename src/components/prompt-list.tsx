@@ -11,7 +11,7 @@ export default async function PromptList() {
     <>
       <div className="flex flex-col w-full px-4 sm:px-6 md:px-10 lg:px-20 py-4">
         <div className="pb-4">
-          <h2 className="text-[#0e141b] text-2xl sm:text-3xl font-bold text-center md:text-left">
+          <h2 className="text-[#0e141b] dark:text-white text-2xl sm:text-3xl font-bold text-center md:text-left">
             Prompts
           </h2>
         </div>

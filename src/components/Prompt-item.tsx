@@ -97,7 +97,7 @@ export function PromptItem({
       <div className="flex-1 w-full">
         <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-1">
           <div>
-            <p className="text-[#0e141b] text-base font-medium leading-normal line-clamp-1">
+            <p className="text-[#0e141b] dark:text-white text-base font-medium leading-normal line-clamp-1">
               title:{title}
             </p>
           </div>
