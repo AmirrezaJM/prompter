@@ -23,4 +23,5 @@ services:
     ports:
       - '3000:3000' 
     environment:
-      - NODE_ENV=${NODE_ENV}
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}  # Ensure DATABASE_URL is correctly set
