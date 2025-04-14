@@ -129,7 +129,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/amirrezajm/Project/reactProjects/prompter/src/generated/prisma",
+      "value": "/Users/amirrezajm/Project/prompter/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -143,7 +143,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/amirrezajm/Project/reactProjects/prompter/prisma/schema.prisma",
+    "sourceFilePath": "/Users/amirrezajm/Project/prompter/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -161,7 +161,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://amirreza:npg_s6zrtjINwb1y@ep-billowing-darkness-a2orj7qa-pooler.eu-central-1.aws.neon.tech/prompty?sslmode=require"
+        "value": "postgresql://prompty_owner:npg_VtZyS3z6lXAu@ep-red-hat-abph3mgb-pooler.eu-west-2.aws.neon.tech/prompty?sslmode=require"
       }
     }
   },
