@@ -66,8 +66,6 @@ export function PromptItem({
   };
 
   const handleFavoritePrompt = async (id: number, isFav: boolean) => {
-    console.log(id, isFav);
-    console.log(id, isFavorite);
     const { message, error } = await EditFavoritePrompt(id, isFav);
     if (error) {
       toast.error(error);

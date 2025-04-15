@@ -23,6 +23,15 @@ export default function PromptForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [mood, setMood] = useState("CHILL");
+  const [isDynamicInput, setDynamicInput] = useState([]);
+
+
+  useEffect(() => {
+    const regex = /{{\s*([^{}]+?)\s*}}/g;
+    const matches = [...description.matchAll(regex)];
+    const variables = matches.map((match) => match[1]);
+    setDynamicInput(variables)
+  }, [description]);
 
   useEffect(() => {
     if (state?.message) {
@@ -107,6 +116,25 @@ export default function PromptForm() {
                   </Select>
                   <input type="hidden" name="mood" value={mood} />
                 </div>
+                      
+                {isDynamicInput.map((item,index) => {
+                  return (
+                    <Input
+                      key={index}
+                      placeholder={`write your input`}
+                      name={`dynamic-${item}`}
+                      id={`dynamic-${item}`}
+                      className="py-2"
+                      aria-describedby="title-error"
+                      value={item}
+                      onChange={(e) => {
+                        const newInputs = [...isDynamicInput];
+                        newInputs[index] = e.target.value;
+                        setDynamicInput(newInputs);
+                      }}
+                    />
+                  );
+                })}
               </div>
 
               <div className="flex px-4 py-3 justify-center">

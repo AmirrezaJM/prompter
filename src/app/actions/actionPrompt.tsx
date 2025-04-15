@@ -6,17 +6,18 @@ import { revalidatePath } from "next/cache";
 import { Prisma } from "@/generated/prisma";
 import { Mood } from "@/generated/prisma";
 const promptSchema = z.object({
-  title: z.string().min(2, "Title must be at least 2 characters"),
-  description: z.string().min(3, "Description must be at least 3 characters"),
+  title: z.string().min(2, "title must be at least 2 characters"),
+  description: z.string().min(3, "description must be at least 3 characters"),
   mood: z.enum(["CHILL", "HAPPY", "SAD", "STUDENT"], {
     errorMap: () => ({
-      message: "Mood must be one of: CHILL, HAPPY, SAD, STUDENT",
+      message: "mood must be one of: CHILL, HAPPY, SAD, STUDENT",
     }),
   }),
   isFavorite: z.boolean({
-    invalid_type_error: "isActive must be a boolean",
+    invalid_type_error: "isFavorite must be a boolean",
   }),
 });
+
 
 type State = {
   errors?: {
@@ -24,9 +25,12 @@ type State = {
     description?: string[];
     mood?: string[];
     isFavorite?: string[];
+    person?: string[];
+    company?: string[];
   };
   message?: string | null;
 };
+
 
 export async function addPrompt(_: State, formData: FormData): Promise<State> {
   const parsed = await promptSchema.safeParseAsync({
@@ -43,9 +47,24 @@ export async function addPrompt(_: State, formData: FormData): Promise<State> {
   const { title, description, mood, isFavorite } = parsed.data;
 
   try {
-    await db.prompt.create({
+    const newPrompt = await db.prompt.create({
       data: { title, description, mood, isFavorite },
     });
+
+    const regex = /{{\s*([^{}]+?)\s*}}/g;
+    const matches = [...description.matchAll(regex)];
+    const variableNames = matches.map((m) => m[1]);
+
+    await Promise.all(
+      variableNames.map((name) =>
+        db.variables.create({
+          data: {
+            name,
+            promptId: newPrompt.id, 
+          },
+        })
+      )
+    );
 
     revalidatePath("/");
     return { message: "Prompt added successfully!" };
@@ -101,7 +120,10 @@ export async function deletePrompt(promptId: number) {
   }
 }
 
-export async function EditFavoritePrompt(promptId: number, isFavorite: boolean) {
+export async function EditFavoritePrompt(
+  promptId: number,
+  isFavorite: boolean
+) {
   try {
     await db.prompt.update({
       where: { id: promptId },
@@ -118,7 +140,12 @@ export async function EditFavoritePrompt(promptId: number, isFavorite: boolean) 
   }
 }
 
-export async function EditPrompt(promptId: number,title:string,description: string,mood:string) {
+export async function EditPrompt(
+  promptId: number,
+  title: string,
+  description: string,
+  mood: string
+) {
   try {
     await db.prompt.update({
       where: { id: promptId },

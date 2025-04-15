@@ -126,6 +126,14 @@ exports.Prisma.PromptScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.VariablesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  promptId: 'promptId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,7 +151,8 @@ exports.Mood = exports.$Enums.Mood = {
 };
 
 exports.Prisma.ModelName = {
-  Prompt: 'Prompt'
+  Prompt: 'Prompt',
+  Variables: 'Variables'
 };
 
 /**

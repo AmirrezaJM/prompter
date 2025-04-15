@@ -9,12 +9,22 @@ datasource db {
 }
 
 model Prompt {
-  id          Int      @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   title       String
   description String
   mood        Mood
-  isFavorite  Boolean  @default(false)
-  createdAt   DateTime @default(now())
+  template    Variables[]
+  isFavorite  Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+}
+
+model Variables {
+  id        String   @id @default(uuid())
+  name      String
+  prompt    Prompt   @relation(fields: [promptId], references: [id])
+  promptId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum Mood {
